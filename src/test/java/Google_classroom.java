@@ -17,9 +17,9 @@ import java.util.Scanner;
 import java.util.Set;
 
 public class Google_classroom {
-    public WebDriver driver;
-    public String Parent_Window = null;
-    public void setup() throws InterruptedException {
+    public static WebDriver driver;
+    public static String Parent_Window = null;
+    public static void setup() throws InterruptedException {
 
         driver = new ChromeDriver();
         driver.get("https://classroom.google.com/");
@@ -39,7 +39,7 @@ public class Google_classroom {
             }
         }
     }
-    public void login(String email, String password) throws InterruptedException {
+    public static void login(String email, String password) throws InterruptedException {
         WebElement un = driver.findElement(By.xpath("//input[@id='identifierId']"));
         un.sendKeys(email);
         driver.findElement(By.xpath("//span[text()='Next']")).click();
@@ -48,7 +48,7 @@ public class Google_classroom {
         pass.sendKeys(password);
         driver.findElement(By.xpath("//span[text()='Next']")).click();
     }
-    public void Grades(String email, String password,String cn) throws InterruptedException {
+    public static void Grades(String email, String password,String cn) throws InterruptedException {
         setup();
         login(email,password);
         String text = null;
@@ -118,6 +118,19 @@ public class Google_classroom {
         } catch (IOException es) {
             es.printStackTrace();
         }
+    }
+    public static void main(String[] args) throws InterruptedException {
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.println(" Enter Email : ");
+        String email = scanner.nextLine();
+        System.out.println(" Enter password : ");
+        String password = scanner.nextLine();
+        System.out.println(" Enter class name : ");
+        String cn = scanner.nextLine();
+        Grades(email,password,cn);
+
+
     }
 
 }
