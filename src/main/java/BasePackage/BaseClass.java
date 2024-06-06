@@ -20,25 +20,14 @@ public class BaseClass {
     public static WebDriver driver;
     public WebDriverWait wait;
     public static String Parent_Window = null;
-    public static Properties prop;
-    public BaseClass() throws IOException {
-        prop = new Properties();
-        FileInputStream ip;
-        ip = new FileInputStream(
-                "./src/main/java/ConfigPackage/User_Credentials.properties");
-        prop.load(ip);
-    }
-
-    public static void setup() throws InterruptedException {
+   public static void setup() throws InterruptedException {
 
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-        driver.get(prop.getProperty("url"));
+        driver.get("https://classroom.google.com/");
         driver.manage().window().maximize();
-
         WebElement sign_in = driver.findElement(By.xpath("(//a[@data-gfe-link-id='sign-in'])[1]"));
         sign_in.click();
-
         Actions actions = new Actions(driver);
         actions.sendKeys(Keys.DOWN).perform();
         actions.sendKeys(Keys.ENTER).perform();

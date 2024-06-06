@@ -21,6 +21,7 @@ public class Login extends BaseClass {
     public Login() throws IOException {
         wait= new WebDriverWait(driver, Duration.ofSeconds(10));
         PageFactory.initElements(driver, this);
+
     }
     public void cls_Login(String un, String pass){
         wait.until(ExpectedConditions.visibilityOf(email)).sendKeys(un);

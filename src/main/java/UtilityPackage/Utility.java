@@ -7,6 +7,7 @@ import org.openqa.selenium.WebElement;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class Utility {
 
@@ -24,4 +25,5 @@ public class Utility {
         reader.close();
         return classnames;
     }
+
 }
