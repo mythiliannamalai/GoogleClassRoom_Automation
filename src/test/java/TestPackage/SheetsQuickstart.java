@@ -67,7 +67,7 @@ public class SheetsQuickstart {
         }
     }
 
-    private static List<String> listCsvFilesCreatedToday(File folder) {
+    static List<String> listCsvFilesCreatedToday(File folder) {
         List<String> csvFiles = new ArrayList<>();
         LocalDate today = LocalDate.now();
 
@@ -87,7 +87,7 @@ public class SheetsQuickstart {
         return csvFiles;
     }
 
-    private static void createNewSpreadSheet(String csvFilePath) {
+    static void createNewSpreadSheet(String csvFilePath) {
         Spreadsheet createdResponse = null;
         try {
             final NetHttpTransport HTTP_TRANSPORT = GoogleNetHttpTransport.newTrustedTransport();
@@ -125,7 +125,7 @@ public class SheetsQuickstart {
         }
     }
 
-    private static void getSpreadSheetInstance() throws GeneralSecurityException, IOException {
+    static void getSpreadSheetInstance() throws GeneralSecurityException, IOException {
         final NetHttpTransport HTTP_TRANSPORT = GoogleNetHttpTransport.newTrustedTransport();
         spreadsheets = new Sheets.Builder(GoogleNetHttpTransport.newTrustedTransport(),
                 GsonFactory.getDefaultInstance(), getCredentials(HTTP_TRANSPORT))
